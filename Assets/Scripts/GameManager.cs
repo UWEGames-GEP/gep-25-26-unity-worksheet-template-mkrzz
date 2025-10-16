@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
             hasChangedState = true;
 
             if (Input.GetKeyDown(KeyCode.Escape))
-
             {
                 
                 state = GameState.PAUSE;
