@@ -1,60 +1,95 @@
+using UnityEditor;
 using UnityEngine;
-
-
+using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour
 {
-   
-    public enum GameState { PAUSE, GAMEPLAY };
-    public GameState state;
-    private bool hasChangedState;
+    
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public interface IGameState
     {
-        
+        void Enter (GameManager gm);
+        void Update (GameManager gm);
+        void Exit (GameManager gm);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private IGameState currentState;
+
+    private class GameplayState : IGameState
     {
-        if (state == GameState.GAMEPLAY)
+        public void Enter(GameManager gm)
         {
-            hasChangedState = true;
+
+            Debug.Log("Gameplay");
+            Time.timeScale = 1f;
+
+        }
+
+
+        public void Update(GameManager gm)
+        {
 
             if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                
-                state = GameState.PAUSE;
-            }
+                gm.ChangeState(new PauseState());
 
         }
-        else if (state == GameState.PAUSE)
 
-        { 
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                state = GameState.GAMEPLAY;
-            }
-        }
-    }
-
-    private void LateUpdate()
-    {
-        if (hasChangedState)
+        public void Exit(GameManager gm)
         {
-            hasChangedState = false;
 
-            if (state == GameState.GAMEPLAY)
-            {
-                Time.timeScale = 1.0f;
-            }
-            else if (state == GameState.PAUSE)
-            {
-                Time.timeScale = 0.0f;
-            }
+            Debug.Log("Exciting Gameplay");
+
         }
-            
-            
     }
+
+    private class PauseState : IGameState
+    {
+        public void Enter(GameManager gm)
+        {
+
+            Debug.Log("paused");
+            Time.timeScale = 0f;
+
+        }
+
+        public void Update(GameManager gm)
+        {
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+                gm.ChangeState(new GameplayState());
+
+        }
+
+        public void Exit(GameManager gm)
+        {
+
+            Debug.Log("Exiting pause");
+
+        }
+
+    }
+
+    private void Start()
+    {
+
+        ChangeState(new GameplayState());
+
+    }
+
+    private void Update()
+    {
+
+        currentState?.Update(this);
+
+    }
+
+    public void ChangeState(IGameState newState)
+    {
+        currentState?.Exit(this);
+        currentState = newState;
+        currentState?.Enter(this);  
+    }
+
 }
+
