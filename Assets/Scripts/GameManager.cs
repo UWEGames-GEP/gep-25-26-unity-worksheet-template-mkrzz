@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         public void Exit(GameManager gm)
         {
 
-            Debug.Log("Exciting Gameplay");
+            
 
         }
     }
@@ -64,7 +64,32 @@ public class GameManager : MonoBehaviour
         public void Exit(GameManager gm)
         {
 
-            Debug.Log("Exiting pause");
+            
+
+        }
+
+    }
+
+    private class MenuState : IGameState
+    {
+        public void Enter(GameManager gm)
+        {
+
+            
+
+        }
+
+        public void Update(GameManager gm)
+        {
+
+            
+
+        }
+
+        public void Exit(GameManager gm)
+        {
+
+
 
         }
 
