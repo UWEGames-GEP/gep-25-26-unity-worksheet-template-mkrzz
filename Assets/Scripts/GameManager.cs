@@ -1,6 +1,6 @@
-using UnityEditor;
+
 using UnityEngine;
-using UnityEngine.XR;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         public void Enter(GameManager gm)
         {
 
-            Debug.Log("paused");
+            Debug.Log("Paused");
             Time.timeScale = 0f;
 
         }
@@ -111,9 +111,11 @@ public class GameManager : MonoBehaviour
 
     public void ChangeState(IGameState newState)
     {
+
         currentState?.Exit(this);
         currentState = newState;
         currentState?.Enter(this);  
+
     }
 
 }
