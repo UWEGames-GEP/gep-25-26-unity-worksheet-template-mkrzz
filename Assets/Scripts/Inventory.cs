@@ -17,9 +17,7 @@ public class Inventory : MonoBehaviour
     public List<string> items = new List<string>();
     string itemName;
    
-
-   
-
+       
     public void Add(string itemName)
     {
 
@@ -35,8 +33,7 @@ public class Inventory : MonoBehaviour
     }
     
    
-
-    
+        
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
