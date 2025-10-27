@@ -51,6 +51,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("Paused");
             Time.timeScale = 0f;
 
+            foreach (var inv in Object.FindObjectsByType<Inventory>(FindObjectsSortMode.None))
+            {
+                inv.enabled = false;
+            }
+
         }
 
         public void Update(GameManager gm)
@@ -64,7 +69,10 @@ public class GameManager : MonoBehaviour
         public void Exit(GameManager gm)
         {
 
-            
+            foreach (var inv in Object.FindObjectsByType<Inventory>(FindObjectsSortMode.None))
+            {
+                inv.enabled = true;
+            }
 
         }
 
