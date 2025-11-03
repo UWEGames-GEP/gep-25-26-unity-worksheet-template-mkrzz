@@ -9,6 +9,23 @@ public class Inventory : MonoBehaviour
 {
     public GameManager gameManager;
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Item collisionItem = hit.collider.gameObject.GetComponent<Item>();
+
+        if (collisionItem != null )
+        {
+            items.Add(collisionItem.name);
+        }
+
+       
+        
+            Destroy(collisionItem.gameObject);
+        
+    }
+
+    
+
     void Start()
     {
         gameManager = FindAnyObjectByType<GameManager>();
@@ -36,7 +53,12 @@ public class Inventory : MonoBehaviour
         
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+
+
+
+
+
+        /*if (Input.GetKeyDown(KeyCode.Alpha1))
         {
 
             AddItemToInventory("Generic Item");
@@ -48,7 +70,7 @@ public class Inventory : MonoBehaviour
 
             RemoveItemFromInventory("Generic Item");            
 
-        }
+        }*/
     }
 
 
