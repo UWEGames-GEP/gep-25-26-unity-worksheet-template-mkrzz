@@ -1,10 +1,11 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections.Generic;
 
 public class Item : MonoBehaviour
 {
-    public string item;
 
     
+    public string itemName;
+    public string itemDescription;
+    
+
 }

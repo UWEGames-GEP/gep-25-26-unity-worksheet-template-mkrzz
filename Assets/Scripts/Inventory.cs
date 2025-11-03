@@ -7,32 +7,40 @@ using System;
 
 public class Inventory : MonoBehaviour
 {
+
     public GameManager gameManager;
+    public List<string> items = new List<string>();
+    public AudioSource audioSource;
+    
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Item collisionItem = hit.collider.gameObject.GetComponent<Item>();
+       
+
+        Item collisionItem = hit.gameObject.GetComponent<Item>();
 
         if (collisionItem != null )
         {
+
             items.Add(collisionItem.name);
+            Destroy(collisionItem.gameObject);            
+            audioSource.Play();                                 
+
         }
 
-       
-        
-            Destroy(collisionItem.gameObject);
-        
+                
     }
 
-    
 
     void Start()
     {
+        
         gameManager = FindAnyObjectByType<GameManager>();
+
+
     }
 
-    public List<string> items = new List<string>();
-    string itemName;
+  
    
        
     public void Add(string itemName)
@@ -49,14 +57,11 @@ public class Inventory : MonoBehaviour
         
     }
     
+    
    
         
     void Update()
     {
-
-
-
-
 
         /*if (Input.GetKeyDown(KeyCode.Alpha1))
         {
