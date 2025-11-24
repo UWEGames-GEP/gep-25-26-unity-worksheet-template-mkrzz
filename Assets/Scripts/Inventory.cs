@@ -1,6 +1,7 @@
-using UnityEngine;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Audio;
 
 
 
@@ -10,10 +11,10 @@ public class Inventory : MonoBehaviour
 
     public GameManager gameManager;
     public List<string> items = new List<string>();
-    public AudioSource audioSource;
     
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
+
+    /*void OnControllerColliderHit(ControllerColliderHit hit)
     {
        
 
@@ -21,15 +22,17 @@ public class Inventory : MonoBehaviour
 
         if (collisionItem != null )
         {
+            
 
             items.Add(collisionItem.name);
-            Destroy(collisionItem.gameObject);            
-            audioSource.Play();                                 
+            Destroy(collisionItem.gameObject);
+
+
 
         }
 
                 
-    }
+    }*/
 
 
     void Start()
