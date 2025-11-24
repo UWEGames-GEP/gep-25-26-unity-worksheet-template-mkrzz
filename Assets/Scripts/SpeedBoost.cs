@@ -8,9 +8,10 @@ public class SpeedBoost : MonoBehaviour
     
     private float defaultSpeed;
     private float defaultSprintSpeed;
-    public float boostedSpeed = 10f;
-    public float boostedSprintSpeed = 10f;
-    public float duration = .005f;
+
+    public float boostedSpeed = 15f;
+    public float boostedSprintSpeed = 15f;
+    public float duration = 1f;
 
 
     private void OnTriggerEnter(Collider other)
@@ -40,6 +41,7 @@ public class SpeedBoost : MonoBehaviour
 
     private IEnumerator BoostRoutine(ThirdPersonController thirdPersonController)
     {
+
         defaultSprintSpeed = thirdPersonController.SprintSpeed;
         defaultSpeed = thirdPersonController.MoveSpeed;
 

@@ -22,7 +22,7 @@ public class Item : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter (Collider other)
+    private void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.CompareTag("Player"))
@@ -32,7 +32,7 @@ public class Item : MonoBehaviour
 
             if (inv != null)
             {
-                inv.Add(itemName);   
+                inv.Add(itemName);
             }
 
             audioSource.Play();
@@ -40,13 +40,13 @@ public class Item : MonoBehaviour
             //disables the collider and mesh renderer 
             itemCollider.enabled = false;
             mr.enabled = false;
-            
+
 
         }
 
     }
 
 
-    
+
 
 }

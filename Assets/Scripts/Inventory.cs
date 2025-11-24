@@ -11,27 +11,29 @@ public class Inventory : MonoBehaviour
 
     public GameManager gameManager;
     public List<string> items = new List<string>();
-    
+    AudioSource audioSource;
+
 
 
     /*void OnControllerColliderHit(ControllerColliderHit hit)
     {
-       
+
 
         Item collisionItem = hit.gameObject.GetComponent<Item>();
 
-        if (collisionItem != null )
+        if (collisionItem != null)
         {
-            
+
 
             items.Add(collisionItem.name);
-            Destroy(collisionItem.gameObject);
-
+            audioSource.Play();
+            collisionItem.gameObject.SetActive(false);
+            
 
 
         }
 
-                
+
     }*/
 
 
