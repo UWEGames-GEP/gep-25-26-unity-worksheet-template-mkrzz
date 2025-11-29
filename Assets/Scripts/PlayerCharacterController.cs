@@ -1,6 +1,7 @@
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static GameManager;
 
 public class PlayerCharacterController : ThirdPersonController
 {
@@ -8,7 +9,10 @@ public class PlayerCharacterController : ThirdPersonController
     {
         if (value.isPressed)
         {
+
             Debug.Log("Pause game");
         }
+
+
     }
 }

@@ -7,9 +7,9 @@ public class Item : MonoBehaviour
     private Collider itemCollider;
     private MeshRenderer mr;
 
-    public string itemName;
-    public string itemDescription;
-    public AudioSource audioSource;
+    [SerializeField] private string itemName;
+    [SerializeField] private string itemDescription;
+    [SerializeField] private AudioSource audioSource;
 
 
     void Start()

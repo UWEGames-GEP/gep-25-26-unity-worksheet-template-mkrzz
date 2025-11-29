@@ -9,6 +9,7 @@ public class PauseState : IGameState
         Debug.Log("Paused");
         Time.timeScale = 0f;
 
+        //disable inventory script when paused
         foreach (var inv in Object.FindObjectsByType<Inventory>(FindObjectsSortMode.None))
         {
             inv.enabled = false;
@@ -27,7 +28,7 @@ public class PauseState : IGameState
     public void Exit(GameManager gm)
     {
 
-        //disable inventory script when paused
+        
         foreach (var inv in Object.FindObjectsByType<Inventory>(FindObjectsSortMode.None))
         {
             inv.enabled = true;
