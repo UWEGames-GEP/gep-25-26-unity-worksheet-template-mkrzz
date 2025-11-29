@@ -10,12 +10,12 @@ public class Inventory : MonoBehaviour
 {
 
     public GameManager gameManager;
-    public List<string> items = new List<string>();
+    public List<Item> items = new List<Item>();
     AudioSource audioSource;
 
 
 
-    /*void OnControllerColliderHit(ControllerColliderHit hit)
+    void OnControllerColliderHit(ControllerColliderHit hit)
     {
 
 
@@ -25,16 +25,18 @@ public class Inventory : MonoBehaviour
         {
 
 
-            items.Add(collisionItem.name);
-            audioSource.Play();
+            items.Add(collisionItem);
+            /*audioSource.Play();*/
             collisionItem.gameObject.SetActive(false);
+            /*Destroy(collisionItem.gameObject);*/
             
+
 
 
         }
 
 
-    }*/
+    }
 
 
     void Start()
@@ -45,26 +47,26 @@ public class Inventory : MonoBehaviour
 
     }
 
-  
-   
-       
-    public void Add(string itemName)
+
+
+
+    /*public void Add(string itemName)
     {
 
-        items.Add(itemName);
-        
+        items.Add(Item);
+
     }
 
     public void Remove(string itemName)
     {
 
         items.Remove(itemName);
-        
-    }
-    
-    
-   
-        
+
+    }*/
+
+
+
+
     void Update()
     {
 
@@ -84,17 +86,17 @@ public class Inventory : MonoBehaviour
     }
 
 
-    private void AddItemToInventory(string v)
+    public void AddItemToInventory(Item item)
     {
 
-        Add(v);
+        items.Add(item);
                 
     }
 
-    private void RemoveItemFromInventory(string v)
+    public void RemoveItemFromInventory(Item item)
     {
-     
-        Remove(v);
+
+        items.Remove(item);
         
     }
 

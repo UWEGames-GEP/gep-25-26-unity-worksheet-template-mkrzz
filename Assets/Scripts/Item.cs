@@ -4,15 +4,15 @@ using UnityEngine.Audio;
 public class Item : MonoBehaviour
 {
 
-    private Collider itemCollider;
-    private MeshRenderer mr;
+    /*private Collider itemCollider;
+    private MeshRenderer mr;*/
 
     [SerializeField] private string itemName;
     [SerializeField] private string itemDescription;
     [SerializeField] private AudioSource audioSource;
 
 
-    void Start()
+    /*void Start()
     {
 
         //looks for these components on the game object
@@ -44,7 +44,7 @@ public class Item : MonoBehaviour
 
         }
 
-    }
+    }*/
 
 
 
