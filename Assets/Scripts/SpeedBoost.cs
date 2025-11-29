@@ -20,13 +20,13 @@ public class SpeedBoost : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
 
-            ThirdPersonController thirdPersonController = other.GetComponent<ThirdPersonController>();
+            PlayerCharacterController playerCharacterController = other.GetComponent<PlayerCharacterController>();
 
 
-            if (thirdPersonController)
+            if (playerCharacterController)
             {
 
-                StartCoroutine(BoostRoutine(thirdPersonController));
+                StartCoroutine(BoostRoutine(playerCharacterController));
 
             }
 
@@ -39,19 +39,19 @@ public class SpeedBoost : MonoBehaviour
     // applies new speeds
     // resets back to default speeds
 
-    private IEnumerator BoostRoutine(ThirdPersonController thirdPersonController)
+    private IEnumerator BoostRoutine(PlayerCharacterController playerCharacterController)
     {
 
-        defaultSprintSpeed = thirdPersonController.SprintSpeed;
-        defaultSpeed = thirdPersonController.MoveSpeed;
+        defaultSprintSpeed = playerCharacterController.SprintSpeed;
+        defaultSpeed = playerCharacterController.MoveSpeed;
 
-        thirdPersonController.MoveSpeed = boostedSpeed;
-        thirdPersonController.SprintSpeed = boostedSprintSpeed;
+        playerCharacterController.MoveSpeed = boostedSpeed;
+        playerCharacterController.SprintSpeed = boostedSprintSpeed;
 
         yield return new WaitForSeconds(duration);
 
-        thirdPersonController.MoveSpeed = defaultSpeed;
-        thirdPersonController.SprintSpeed = defaultSprintSpeed;
+        playerCharacterController.MoveSpeed = defaultSpeed;
+        playerCharacterController.SprintSpeed = defaultSprintSpeed;
 
     }
 
