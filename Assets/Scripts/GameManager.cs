@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour
 {
 
     IGameState currentState;
+    [SerializeField] private Inventory inventory;
+
+    private void Awake()
+    {
+        inventory = FindAnyObjectByType<Inventory>();
+    }
 
     public interface IGameState
     {
@@ -52,6 +58,16 @@ public class GameManager : MonoBehaviour
             ChangeState(new GameplayState());
         }
 
+    }
+
+    public void DisableInventory()
+    {
+        inventory.enabled = false;
+    }
+
+    public void EnableInventory()
+    {
+        inventory.enabled = true;
     }
 
 }

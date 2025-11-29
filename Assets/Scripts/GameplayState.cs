@@ -16,9 +16,8 @@ public class GameplayState : IGameState
     public void Update(GameManager gm)
     {
 
-        /*if (Input.GetKeyDown(KeyCode.Escape))
-            gm.ChangeState(new PauseState());
-*/
+        
+
     }
 
     public void Exit(GameManager gm)
