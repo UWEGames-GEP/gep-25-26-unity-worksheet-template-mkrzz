@@ -5,12 +5,19 @@ using static GameManager;
 
 public class PlayerCharacterController : ThirdPersonController
 {
+
+    [SerializeField] private GameManager gameManager;
+
+
     private void OnPause(InputValue value)
     {
         if (value.isPressed)
         {
 
-            Debug.Log("Pause game");
+           gameManager.TogglePause();
+
+            
+
         }
 
 

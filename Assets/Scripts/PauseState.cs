@@ -20,8 +20,8 @@ public class PauseState : IGameState
     public void Update(GameManager gm)
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-            gm.ChangeState(new GameplayState());
+        /*if (Input.GetKeyDown(KeyCode.Escape))
+            gm.ChangeState(new GameplayState());*/
 
     }
 
