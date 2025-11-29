@@ -5,16 +5,18 @@ using UnityEngine.Rendering;
 
 public class SpeedBoost : MonoBehaviour
 {
-    
-    private float defaultSpeed;
-    private float defaultSprintSpeed;
 
-    public float boostedSpeed = 15f;
-    public float boostedSprintSpeed = 15f;
-    public float duration = 1f;
+    [SerializeField] private float defaultSpeed;
+    [SerializeField] private float defaultSprintSpeed;
+
+    [SerializeField] private float boostedSpeed = 15f;
+    [SerializeField] private float boostedSprintSpeed = 15f;
+    [SerializeField] private float duration = 1f;
+
+    [SerializeField] private AudioSource audioSource;
 
 
-    private void OnTriggerEnter(Collider other)
+   private void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.CompareTag("Player"))
@@ -31,6 +33,8 @@ public class SpeedBoost : MonoBehaviour
             }
 
         }
+
+        audioSource.Play();
 
     }
 
