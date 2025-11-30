@@ -9,11 +9,12 @@ using UnityEngine.Audio;
 public class Inventory : MonoBehaviour
 {
 
-    public GameManager gameManager;
-    public List<Item> items = new List<Item>();
+    GameManager gameManager;   
     AudioSource audioSource;
+    Transform worldItemsTransform;
 
-
+    public List<Item> items = new List<Item>();
+    
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -25,11 +26,11 @@ public class Inventory : MonoBehaviour
         {
 
 
-            items.Add(collisionItem);
-            /*audioSource.Play();*/
+            items.Add(collisionItem);            
             collisionItem.gameObject.SetActive(false);
+
             /*Destroy(collisionItem.gameObject);*/
-            
+            /*audioSource.Play();*/
 
 
 
@@ -44,6 +45,7 @@ public class Inventory : MonoBehaviour
         
         gameManager = FindAnyObjectByType<GameManager>();
 
+        Transform worldItemsTransform = GameObject.Find("WorldItems").transform;
 
     }
 
@@ -98,6 +100,36 @@ public class Inventory : MonoBehaviour
 
         items.Remove(item);
         
+    }
+
+    public void RemoveItemFromInventory()
+    {
+
+        // Check that we can remove item from inventory
+        if (gameManager.currentState is GameplayState && items.Count > 0)
+        {
+
+            // Store the item at the top of the list as a variable
+            Item item = items[0];
+
+            // Get the properties for where we want to spawn 
+            Vector3 currentPosition = transform.position;
+            Vector3 forward = transform.forward;
+
+            Vector3 newPosition = currentPosition + forward;
+            newPosition += new Vector3(0, 1, 0);
+
+            Quaternion currentRotation = transform.rotation;
+            Quaternion newRotation = currentRotation * Quaternion.Euler(0, 100, 0);
+
+            // Instantiate a copy of the held item
+            GameObject newItem = Instantiate(item.gameObject, newPosition, newRotation, worldItemsTransform);
+            newItem.SetActive(true);
+
+            // Clean up exisiting item 
+            items.Remove(item);
+            Destroy(item.gameObject);
+        }
     }
 
 }
