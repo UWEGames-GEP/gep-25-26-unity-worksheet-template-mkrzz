@@ -8,6 +8,7 @@ public class NoGravity : MonoBehaviour
     [SerializeField] private float noGravity = 0f;
     [SerializeField] private float duration = 5f;
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -25,6 +26,7 @@ public class NoGravity : MonoBehaviour
 
         }
     }
+
 
     private IEnumerator BoostRoutine(PlayerCharacterController playerCharacterController)
     {

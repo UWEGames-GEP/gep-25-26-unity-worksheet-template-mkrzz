@@ -9,7 +9,8 @@ public class Item : MonoBehaviour
 
     [SerializeField] private string itemName;
     [SerializeField] private string itemDescription;
-    [SerializeField] private AudioSource audioSource;
+    public AudioClip pickupSound;
+    
 
 
     /*void Start()

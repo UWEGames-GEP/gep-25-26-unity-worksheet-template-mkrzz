@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
 {
 
     GameManager gameManager;   
-    AudioSource audioSource;
+   /* public AudioSource audioSource;*/
     Transform worldItemsTransform;
 
     public List<Item> items = new List<Item>();
@@ -25,12 +25,15 @@ public class Inventory : MonoBehaviour
         if (collisionItem != null)
         {
 
-
-            items.Add(collisionItem);            
+            
+            items.Add(collisionItem);
             collisionItem.gameObject.SetActive(false);
+            AudioSource.PlayClipAtPoint(collisionItem.pickupSound, collisionItem.transform.position);
 
+           /* audioSource.PlayOneShot(collisionItem.pickupSound);*/
             /*Destroy(collisionItem.gameObject);*/
             /*audioSource.Play();*/
+
 
 
 
@@ -48,23 +51,6 @@ public class Inventory : MonoBehaviour
         Transform worldItemsTransform = GameObject.Find("WorldItems").transform;
 
     }
-
-
-
-
-    /*public void Add(string itemName)
-    {
-
-        items.Add(Item);
-
-    }
-
-    public void Remove(string itemName)
-    {
-
-        items.Remove(itemName);
-
-    }*/
 
 
 
