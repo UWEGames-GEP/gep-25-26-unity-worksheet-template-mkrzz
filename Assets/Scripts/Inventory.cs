@@ -129,6 +129,7 @@ public class Inventory : MonoBehaviour
             // Clean up exisiting item 
             items.Remove(item);
             Destroy(item.gameObject);
+            /*item.gameObject.SetActive(false);*/
         }
     }
 

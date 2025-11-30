@@ -27,6 +27,8 @@ public class PlayerCharacterController : ThirdPersonController
         {
             Debug.Log("Removed item");
             GetComponent<Inventory>().RemoveItemFromInventory();
+
+
         }
     }
 }
