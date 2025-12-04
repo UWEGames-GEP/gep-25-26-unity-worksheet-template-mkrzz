@@ -14,6 +14,8 @@ public class Inventory : MonoBehaviour
     Transform worldItemsTransform;
 
     public List<Item> items = new List<Item>();
+    public delegate void OnInventoryChanged();
+    public OnInventoryChanged onInventoryChanged;
     
 
     void OnControllerColliderHit(ControllerColliderHit hit)
@@ -29,8 +31,9 @@ public class Inventory : MonoBehaviour
             items.Add(collisionItem);
             collisionItem.gameObject.SetActive(false);
             AudioSource.PlayClipAtPoint(collisionItem.pickupSound, collisionItem.transform.position);
+            onInventoryChanged?.Invoke();
 
-           /* audioSource.PlayOneShot(collisionItem.pickupSound);*/
+            /* audioSource.PlayOneShot(collisionItem.pickupSound);*/
             /*Destroy(collisionItem.gameObject);*/
             /*audioSource.Play();*/
 
@@ -77,6 +80,7 @@ public class Inventory : MonoBehaviour
     {
 
         items.Add(item);
+        
                 
     }
 
@@ -85,6 +89,7 @@ public class Inventory : MonoBehaviour
 
         items.Remove(item);
         
+
     }
 
     public void RemoveItemFromInventory()
@@ -115,6 +120,7 @@ public class Inventory : MonoBehaviour
             items.Remove(item);
             Destroy(item.gameObject);
             /*item.gameObject.SetActive(false);*/
+            onInventoryChanged?.Invoke();
         }
     }
 
