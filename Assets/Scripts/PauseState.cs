@@ -8,6 +8,7 @@ public class PauseState : IGameState
 
         Debug.Log("Paused");
         Time.timeScale = 0f;
+
         // disables inventory script when entering pause state
         gm.DisableInventory();
         

@@ -47,7 +47,6 @@ public class Inventory : MonoBehaviour
     {
         
         gameManager = FindAnyObjectByType<GameManager>();
-
         Transform worldItemsTransform = GameObject.Find("WorldItems").transform;
 
     }
