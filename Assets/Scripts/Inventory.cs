@@ -118,8 +118,10 @@ public class Inventory : MonoBehaviour
 
             // Clean up exisiting item 
             items.Remove(item);
-            Destroy(item.gameObject);
-            /*item.gameObject.SetActive(false);*/
+            /*Destroy(item.gameObject);*/
+
+            // allows for crate items to be picked up after being dropped
+            item.gameObject.SetActive(false);
             onInventoryChanged?.Invoke();
         }
     }

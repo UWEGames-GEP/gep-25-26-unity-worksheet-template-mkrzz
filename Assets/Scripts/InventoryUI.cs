@@ -9,8 +9,10 @@ public class InventoryUI : MonoBehaviour
 
     void Start()
     {
+
         inventory.onInventoryChanged += RefreshUI;
         RefreshUI();
+
     }
 
     public void RefreshUI()
@@ -19,12 +21,15 @@ public class InventoryUI : MonoBehaviour
         //removes slot from inventory
         foreach (Transform child in inventoryPanel)
         {
+
             Destroy(child.gameObject);
+
         }
 
         // adds a new slot for item
         foreach (var item in inventory.items)
         {
+
             GameObject slot = Instantiate(slotPrefab, inventoryPanel);
 
             //Confirms correct scale of image
@@ -33,6 +38,7 @@ public class InventoryUI : MonoBehaviour
             //assigns the icon
             Image icon = slot.transform.Find("ItemIcon").GetComponent<Image>();
             icon.sprite = item.itemIcon;
+
 
         }
 

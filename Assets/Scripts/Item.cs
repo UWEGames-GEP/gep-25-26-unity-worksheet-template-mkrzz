@@ -4,14 +4,18 @@ using UnityEngine.Audio;
 public class Item : MonoBehaviour
 {
 
-    /*private Collider itemCollider;
-    private MeshRenderer mr;*/
-
+    
     [SerializeField] private string itemName;
     [SerializeField] private string itemDescription;
     public AudioClip pickupSound;
     public Sprite itemIcon;
-    
+
+    // accessible by other scripts if referencing below
+    public string ItemName => itemName;
+    public string ItemDescription => itemDescription;
+    public AudioClip PickupSound => pickupSound;
+    public Sprite ItemIcon => itemIcon;
+
 
 
     /*void Start()
