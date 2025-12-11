@@ -5,26 +5,16 @@ public class LootCrateInteraction : MonoBehaviour
 {
     public LootCrateUI lootCrateUI;
     private bool playerInRange;
-    public TextMeshProUGUI interactionHint;
-    private Camera mainCamera;
-    public Vector3 hintOffset = new Vector3(0, 1f, 0);
+    public GameObject pressEText;
 
 
-    void Start()
-    {
-        mainCamera = Camera.main;
-    }
+
 
 
     void Update()
     {
 
-        // Follow the crate
-        if (interactionHint.gameObject.activeSelf)
-        {
-            Vector3 screenPos = mainCamera.WorldToScreenPoint(transform.position + hintOffset);
-            interactionHint.transform.position = screenPos;
-        }
+      
 
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
@@ -45,8 +35,10 @@ public class LootCrateInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
             playerInRange = true;
 
-        if (interactionHint != null)
-            interactionHint.gameObject.SetActive(true);
+        if (pressEText != null)
+            pressEText.SetActive(true);
+
+
 
     }
 
@@ -57,8 +49,9 @@ public class LootCrateInteraction : MonoBehaviour
 
             playerInRange = false;
             lootCrateUI.Hide();
-            if (interactionHint != null)
-                interactionHint.gameObject.SetActive(false);
+
+            if (pressEText != null)
+                pressEText.SetActive(false);
 
         }
     }
